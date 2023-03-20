@@ -1,16 +1,17 @@
 import { Calistoga } from "@next/font/google";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 
 const EventPage = ({ data }) => {
+  const {data: session, status} = useSession({required:true});
   const inputEmail = useRef();
   const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
     const emailValue = inputEmail.current.value;
     const eventId = router?.query.id;
-
     try {
       const response = await fetch("/api/email-registration", {
         method: "POST", headers:{'Content-Type': 'application/json'},
@@ -22,6 +23,8 @@ const EventPage = ({ data }) => {
       console.log("ERROR", e);
     }
   };
+  if(status === 'authenticated')
+  {
 
   return (
     <div class="text-white dark:bg-black max-w-4xl mx-auto">
@@ -55,6 +58,8 @@ const EventPage = ({ data }) => {
     </div>
   );
 };
+}
+
 export default EventPage;
 
 export async function getStaticPaths() {

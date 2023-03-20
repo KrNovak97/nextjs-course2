@@ -14,8 +14,8 @@ export const Footer = () => {
             <h2>Phone: (+385)52 386-772</h2>
                 </address>
                 <nav class="hidden md:flex flex-col gap-2" aria-label="footer" >
-            <Link href="./events" class="hover:underline">Events</Link>
-            <Link href="./about-us" class="hover:underline">About Us</Link>
+            <Link href="/events" class="hover:underline">Events</Link>
+            <Link href="/about-us" class="hover:underline">About Us</Link>
             
         </nav>
         <div class="flex flex-col sm:gap-2">
